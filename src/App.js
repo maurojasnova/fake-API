@@ -1,9 +1,11 @@
-
+import React from "react";
+import CRUDApp from "./components/CRUDApp";
 
 function App() {
   return (
     <div>
-      <h2>CRUD App</h2>
+      <h1>React excercises</h1>
+      <CRUDApp />
     </div>
   );
 }
