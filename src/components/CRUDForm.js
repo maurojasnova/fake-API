@@ -9,13 +9,13 @@ const initailForm = {
 const CRUDForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   const [form, setForm] = useState(initailForm);
 
-  // useEffect(() => {
-  //   if (dataToEdit) {
-  //     setForm(dataToEdit);
-  //   } else {
-  //     setForm(initailForm);
-  //   }
-  // }, [dataToEdit]);
+useEffect(() => {
+  if(dataToEdit) {
+    setForm(dataToEdit);
+  } else {
+    setForm(initailForm);
+  }
+}, [dataToEdit])
 
   const handleChange = (e) => {
     setForm({
@@ -48,7 +48,7 @@ const CRUDForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
 
   return (
     <div>
-      <h3>Add</h3>
+      <h3>{!!dataToEdit ? "Edit" : "Add"}</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
