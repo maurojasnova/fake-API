@@ -14,15 +14,24 @@ const CRUDApp = () => {
 
   const createData = (data) => {
     data.id = Date.now();
-    setDb([...db, data])
+    setDb([...db, data]);
   };
 
   const updateData = (data) => {
-    let newData = db.map(el => el.id === data.id ? data : el);
+    let newData = db.map((el) => (el.id === data.id ? data : el));
     setDb(newData);
   };
 
-  const deleteData = (id) => {};
+  const deleteData = (id) => {
+    let isDelete = window.confirm(`Are you sure deleting '${id}'?`);
+
+    if(isDelete) {
+      let newData = db.filter(el => el.id !== id);
+      setDb(newData)
+    } else {
+      return;
+    }
+  };
 
   return (
     <div>
@@ -33,7 +42,11 @@ const CRUDApp = () => {
         dataToEdit={dataToEdit}
         setDataToEdit={setDataToEdit}
       />
-      <CRUDTable data={db} setDataToEdit={setDataToEdit} deleteData={deleteData} />
+      <CRUDTable
+        data={db}
+        setDataToEdit={setDataToEdit}
+        deleteData={deleteData}
+      />
     </div>
   );
 };
