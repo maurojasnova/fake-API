@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import CRUDForm from "./CRUDForm";
 import CRUDTable from "./CRUDTable";
 
-const initialDb = [
-  { id: 1, name: "Seiya", constellation: "Pegaso" },
-  { id: 2, name: "Shiryu", constellation: "Dragon" },
-];
 
 const CRUDApp = () => {
-  const [db, setDb] = useState(initialDb);
+  const [db, setDb] = useState([]);
 
   const [dataToEdit, setDataToEdit] = useState(null);
 
